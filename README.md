@@ -94,6 +94,6 @@ ex. Dominique Pizzie
 ex. @DomPizzie
 
 ## License
-
+[MIT License](https://gh.io/mit)
 
 
