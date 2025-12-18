@@ -39,7 +39,7 @@ SAFEVOICE project/
 ```
 
 * **`app.py`**: The main entry point. Runs the Streamlit UI, collects user reports, and triggers the pipeline.
-* **`src/orchestrator/pipeline.py`**: The central controller that manages the flow of data from cleaning to transformation to ingestion.
+* **`src/orchestrator/pipeline.py`**: The central orchestrator that manages the flow of data from cleaning to transformation to ingestion.
 * **`src/cleaning/cleaner.py`**: Validates raw input against the CDM schema and handles missing values or type conversions.
 * **`src/transform/mapper.py`**: Converts the cleaned flat data into RDF N-Triples using the YARRRML mapping configuration.
 * **`src/storage/ingest.py`**: Handles the connection to the AllegroGraph server and uploads the generated RDF files.
@@ -86,12 +86,17 @@ SAFEVOICE project/
    ```
    
 ### Executing program
-
+```sh
+streamlit run app.py
+```
 ## Authors
-Contributors names and contact info
-
-ex. Dominique Pizzie
-ex. @DomPizzie
+| Name | Github Username | 
+| :---- | :------------------- |
+|DA    |duyanhtrinh| 
+|Mihir |mihirramani|
+|Nurifeiya |nurifeiya|
+|Stephanie |yocabano|
+|Xiong |arashikuma|
 
 ## License
 [MIT License](https://gh.io/mit)
