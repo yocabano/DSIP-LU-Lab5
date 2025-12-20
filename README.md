@@ -43,7 +43,7 @@ SAFEVOICE project/
 - **`src/orchestrator/pipeline.py`**: Acts as the central orchestrator, managing the full data flow from cleaning and transformation to ingestion.
 - **`src/cleaning/cleaner.py`**: Converts raw input data into the correct data types based on the CDM schema (located under `/config` and configurable), and performs preprocessing steps such as geodata anonymization.
 - **`src/transform/mapper.py`**: Converts the cleaned data into RDF N-Triples using the provided YARRRML mapping configuration (located under `/config` and configurable).
-- **`src/storage/ingest.py`**: Manages the connection to the AllegroGraph server and uploads the generated RDF files to the source-specific repository.
+- **`src/storage/ingest.py`**: Manages the connection to the AllegroGraph server and uploads the generated RDF files to the source-specific repository (e.g., `001_repo`).
 - **`config/`**: Contains the UI dropdown CSV file, the CDM schema CSV file, and the YARRRML mapping configuration file.
 
 ## Getting Started
