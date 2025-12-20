@@ -64,7 +64,7 @@ SAFEVOICE project/
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/yocabano/DSIP-LU-Lab5.git
    ```
 2.  **Install dependencies:**
     ```sh
