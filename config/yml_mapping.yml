@@ -1,0 +1,119 @@
+prefixes:
+  ex: "https://w3id.org/dsip/eepa/"
+  cdm: "https://w3id.org/dsip/cdm/"
+  schema: "https://schema.org/"
+  prov: "http://www.w3.org/ns/prov#"
+  xsd: "http://www.w3.org/2001/XMLSchema#"
+
+sources:
+  eepaSource:
+    access: "/Users/vilasramani/Desktop/DSIP_pipeline_fresh/data/processed/eepa_clean_flat.csv"
+    referenceFormulation: csv
+
+mappings:
+
+  # 1. Case
+  case_mapping:
+    sources: [eepaSource]
+    s: ex:case_$(data_record_record_id)
+    po:
+      - [a, cdm:HumanTraffickingCase]
+      
+      - [cdm:hasVictim, ex:victim_$(data_victim_victim_id)]
+      - [cdm:hasTrafficker, ex:trafficker_$(data_trafficker_trafficker_id)]
+      
+      - [schema:fromLocation, ex:departure_place_$(data_record_record_id)]
+      - [schema:toLocation, ex:destination_place_$(data_record_record_id)]
+      
+      # Incident
+      - [cdm:recordId, $(data_record_record_id)]
+      - [schema:identifier, $(data_record_record_id)]
+      - [prov:wasAssociatedWith, ex:EEPA]
+      
+      # Publication
+      - [schema:mainEntityOfPage, ex:article_$(data_record_record_id)]
+
+
+  # 2. Victim
+  victim_mapping:
+    sources: [eepaSource]
+    s: ex:victim_$(data_victim_victim_id)
+    po:
+      - [a, schema:Person]
+      - [a, cdm:Victim]
+      - [schema:Identifier, $(data_victim_victim_id)]
+      - [schema:Number, $(data_victim_count), xsd:integer]
+      - [schema:Nationality, $(data_victim_nationality)]
+      - [schema:Age, $(data_victim_age), xsd:integer]
+      - [schema:Gender, $(data_victim_gender)]
+      - [schema:Status, $(data_victim_situation)]
+      - [schema:Description, $(data_victim_description)]
+      - [schema:Location, ex:victim_current_place_$(data_record_record_id)]
+
+  # 3. Trafficker
+  trafficker_mapping:
+    sources: [eepaSource]
+    s: ex:trafficker_$(data_trafficker_trafficker_id)
+    po:
+      - [a, schema:Person]
+      - [a, cdm:Trafficker]
+      - [schema:Identifier, $(data_trafficker_trafficker_id)]
+      - [schema:Name, $(data_trafficker_name)]
+      - [schema:Nationality, $(data_trafficker_nationality)]
+      - [schema:Description, $(data_trafficker_description)]
+
+  # 4. Victim Current Location
+  victim_current_place_mapping:
+    sources: [eepaSource]
+    s: ex:victim_current_place_$(data_record_record_id)
+    po:
+      - [a, schema:Place]
+      - [schema:addressCountry, $(data_victim_current_location_country)]
+      - [schema:addressRegion, $(data_victim_current_location_state)] 
+      - [schema:addressLocality, $(data_victim_current_location_town)] 
+      - [schema:description, $(data_victim_current_location_village)] 
+      - [schema:latitude, $(data_victim_current_location_latitude), xsd:float]
+      - [schema:longitude, $(data_victim_current_location_longitude), xsd:float]
+
+  # 5. Departure / FromLocation
+  departure_place_mapping:
+    sources: [eepaSource]
+    s: ex:departure_place_$(data_record_record_id)
+    po:
+      - [a, schema:Place]
+
+      - [schema:addressCountry, $(data_incident_departure_country)] 
+      - [schema:addressRegion, $(data_incident_departure_state)]
+      - [schema:addressLocality, $(data_incident_departure_town)]
+      - [schema:latitude, $(data_incident_departure_latitude), xsd:float]
+      - [schema:longitude, $(data_incident_departure_longitude), xsd:float]
+      - [schema:name, $(data_incident_departure_name)]
+      - [schema:description, $(data_incident_departure_type)]
+      - [schema:description, $(data_incident_departure_description)]
+
+
+  # 6. Destination / ToLocation
+  destination_place_mapping:
+    sources: [eepaSource]
+    s: ex:destination_place_$(data_record_record_id)
+    po:
+      - [a, schema:Place]
+
+      - [schema:addressCountry, $(data_incident_destination_country)]
+      - [schema:addressRegion, $(data_incident_destination_state)]
+      - [schema:addressLocality, $(data_incident_destination_town)]
+      - [schema:latitude, $(data_incident_destination_latitude), xsd:float]
+      - [schema:longitude, $(data_incident_destination_longitude), xsd:float]
+      - [schema:description, $(data_incident_destination_type)]
+      - [schema:description, $(data_incident_destination_description)]
+
+  # 7. Publication
+  publication_mapping:
+    sources: [eepaSource]
+    s: ex:article_$(data_record_record_id)
+    po:
+      - [a, schema:Article]
+      - [schema:identifier, $(data_record_record_id)]
+      - [schema:name, $(data_publication_name)]
+      - [schema:url, $(data_publication_link)]
+      - [schema:datePublished, $(data_publication_date)]

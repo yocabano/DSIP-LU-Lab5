@@ -1,0 +1,52 @@
+Level 1,Level 2,Level 3,Drop-downs,Format,Controlled vocabulary,Definition
+Record,,,,,,
+,Record ID,,,String,,The ID of the record
+,Source ID,,,String,,The ID of the source from which the incident was received
+,Date received,,,Date,,Date at which the incident was received
+,Date recorded,,,Date,,Date at which the incident was recorded
+Victim,,,,,,
+,Victim ID,,,String,,The ID of the victim
+,Number of victims,,,Integer,,The number of people that were a victim of the incident
+,Nationality,,Ethiopia; Eritrea; Sudan; Kenya; Uganda,String (predefined),,The nationality of the victims
+,Age,,,Integer,,Age of the victim(s)
+,Gender,,Male; Female; Other,String (predefined),,Gender of the victim(s)
+,Situation,,In captivity; en route; etc.,String (predefined),,
+,Description,,,String,,A description of the victim and/or their situation
+,Current location,,,String,,The location of the victim when the report was received
+,,Country,,String (predefined),,The country in which the victim is located when the report is received
+,,State,,String (predefined),,The state in which the victim is located when the report is received
+,,Town,,String,,The town in which the victim is located when the report is received
+,,Village,,String,,The village in which the victim is located when the report is received
+,,Latitude,,Decimal,,The approximate latitude of the location of the victim when the report is received
+,,Longitude,,Decimal,,The approximate longitude of the location of the victim when the report is received
+Incident,,,,,,
+,Incident ID,,,,,The ID of the incident
+,Place of departure,,,,,The last location from where the victim departed
+,,Country,,String (predefined),,The country of the place of departure
+,,State,,String (predefined),,The state of the place of departure
+,,Town,,String,,The town of the place of departure
+,,Village,,String,,The village of the place of departure
+,,Latitude,,Decimal,,The latitudinal coordinates of the place of departure
+,,Longitude,,Decimal,,The longitudinal coordinates of the place of departure
+,,Name,,String,,The name of the location from where the victim departed
+,,Type,Refugee/IDP Camp; human trafficking/smuggling camp; etc. ,String (predefined),,
+,,Description,,String,,A description of the location from where the victim departed
+,Destination,,,,,The place where the victim is headed to
+,,Country,,String (predefined),,The country of destination
+,,State,,String (predefined),,The state of destination
+,,Town,,String,,The town of destination
+,,Village,,String,,The village of destination
+,,Latitude,,Decimal,,The latitudinal coordinates of the destination
+,,Longitude,,Decimal,,The longitudinal coordinates of the destination
+,,Name,,String,,The name of the destination
+,,Type,Refugee/IDP Camp; human trafficking/smuggling camp; etc. ,String (predefined),,
+,,Description,,String,,A description of the destination
+Trafficker,,,,,,
+,Trafficker ID,,,String,,The ID of the trafficker
+,Name,,,String,,The name of the trafficker
+,Nationality,,Ethiopia; Eritrea; Sudan; Kenya; Uganda,String (predefined),,The nationality of the trafficker
+,Description,,,String,,A description of the trafficker
+Publication,,,,,,Any publication linked to the incident
+,Name,,,String,,The name of the publication linked to the incident
+,Link,,,URL,,The link to the publication linked to the incident
+,Date publication,,,Date,,The date that the publication was published
